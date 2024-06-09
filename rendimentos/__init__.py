@@ -3,7 +3,8 @@ import validacoes
 
 def ver_rendimento_do_dia(dicioFilmes):
     total = 0
-    for codigoFilme, filme in dicioFilmes.items():
+    for codigoFilme in dicioFilmes:
+        filme = dicioFilmes[codigoFilme]
         total += filme[8] * filme[7]
     print(f'\nRendimento do dia: R${total}\n')
 
