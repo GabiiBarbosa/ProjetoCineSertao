@@ -78,17 +78,17 @@ def atualizar_filme(dicioFilmes):
     novo_valor = validacoes.validar_campo('Digite o novo conteúdo: ')
 
     if campo == 'nome':
-        for filme_cod, filme_nome in dicioFilmes.items():
+        for filme_cod, filme_nome in dicioFilmes():
             if novo_valor == filme_nome:
                 print('O nome do filme já está em uso.')
                 return
     elif campo == 'sala':
-        for filme_cod, filme_sala in dicioFilmes.items():
+        for filme_cod, filme_sala in dicioFilmes():
             if novo_valor == filme_sala[4]:
                 print('A sala do filme já está em uso.')
                 return
     if campo == 'valor':
-        for filme_id, filme_info in dicioFilmes.items():
+        for filme_id, filme_info in dicioFilmes():
             novo_valor = float(novo_valor)
 
     dicioFilmes[codigo_filme][campos_validos[campo]] = novo_valor
