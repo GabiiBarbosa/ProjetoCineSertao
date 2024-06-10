@@ -37,7 +37,7 @@ def cadastrar_filme(dicioFilmes):
 
     capacidadeDoFilme = 100
     horarioDoFilme = validacoes.validar_campo('Insira o horário do filme: ')
-    valorDoFilme = float(validacoes.validar_valor('Insira o valor do ingresso: R$ '))
+    valorDoFilme = float(validacoes.validar_campo('Insira o valor do ingresso: R$ '))
 
     dicioFilmes[codigoFilme] = [nomeDoFilme, sinopseDoFilme, generoDoFilme, duracaoDoFilme,
                                 salaDoFilme, capacidadeDoFilme, horarioDoFilme, valorDoFilme, 0]
@@ -49,11 +49,11 @@ def buscar_filmes(dicioFilmes):
     busca = busca.upper()
     encontrado = False
 
-    for codigoFilme, filme in dicioFilmes():
-        nomeFilme = filme[0].upper()
+    for codigoFilme in dicioFilmes:
+        nomeFilme = dicioFilmes[codigoFilme][0].upper()
 
         if busca in nomeFilme:
-            print(f'\nCódigo: {codigoFilme} - Nome: {filme[0]}')
+            print(f'\nCódigo: {codigoFilme} - Nome: {dicioFilmes[codigoFilme][0]}')
             encontrado = True
 
     if not encontrado:
@@ -95,6 +95,15 @@ def atualizar_filme(dicioFilmes):
 
     dicioFilmes[codigo_filme][campos_validos[campo]] = novo_valor
     print(f'\n{campo} do filme atualizado com sucesso.')
+
+def remover_filme(dicioFilmes, filmesExcluidos):
+    if filmesExcluidos in dicioFilmes:
+        dicioFilmes.pop(filmesExcluidos)
+        print('\nFilme removido com sucesso.')
+    else:
+        print('\nFilme não encontrado.')
+
+
 
 def remover_filme(dicioFilmes, filmesExcluidos):
     if filmesExcluidos in dicioFilmes:
