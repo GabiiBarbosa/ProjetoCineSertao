@@ -8,6 +8,7 @@ def ver_rendimento_do_dia(dicioFilmes):
         total += filme[8] * filme[7]
     print(f'\nRendimento do dia: R${total}\n')
 
+
 def ingressos_vendidos_total(dicioFilmes):
     print('\nIngressos vendidos por filme:')
     for codigoFilme in dicioFilmes:
