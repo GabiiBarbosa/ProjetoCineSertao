@@ -1,3 +1,4 @@
+# Dupla: Gabrielle e Jordanna
 # Dicionários e listas iniciais
 import filmes
 import ingressos
