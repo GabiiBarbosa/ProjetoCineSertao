@@ -62,13 +62,13 @@ def buscar_filmes(dicioFilmes):
     return encontrado
 
 def atualizar_filme(dicioFilmes):
-    codigo_filme = validacoes.validar_campo('Digite o código do filme a ser atualizado: ')
+    codigo_filme = validacoes.validar_campo('\nDigite o código do filme a ser atualizado: ')
 
     if codigo_filme not in dicioFilmes:
         print('Filme não encontrado.')
         return
 
-    campos_validos = ['nome', 'sinopse', 'genero', 'duracao', 'sala', 'capacidade', 'horario', 'valor']
+    campos_validos = {'nome': 0, 'sinopse': 1, 'genero': 2, 'duracao': 3, 'sala': 4, 'capacidade': 5, 'horario': 6, 'valor': 7}
     campo = validacoes.validar_campo('Digite o campo a ser atualizado (nome, sinopse, genero, duracao, sala, horario, valor): ')
 
     if campo not in campos_validos:
@@ -78,21 +78,23 @@ def atualizar_filme(dicioFilmes):
     novo_valor = validacoes.validar_campo('Digite o novo conteúdo: ')
 
     if campo == 'nome':
-        for filme_cod, filme_nome in dicioFilmes():
-            if novo_valor == filme_nome:
-                print('O nome do filme já está em uso.')
+        for filme_cod in dicioFilmes:
+            if novo_valor == dicioFilmes[filme_cod][0] and filme_cod != codigo_filme:
+                print('\nO nome do filme já está em uso.')
                 return
-    elif campo == 'sala':
-        for filme_cod, filme_sala in dicioFilmes():
-            if novo_valor == filme_sala[4]:
-                print('A sala do filme já está em uso.')
+
+    if campo == 'sala':
+        novo_valor_int = int(novo_valor)
+        for filme_cod in dicioFilmes:
+            if novo_valor_int == dicioFilmes[filme_cod][4] and filme_cod != codigo_filme:
+                print('\nA sala do filme já está em uso.')
                 return
+
     if campo == 'valor':
-        for filme_id, filme_info in dicioFilmes():
-            novo_valor = float(novo_valor)
+        novo_valor = float(novo_valor)
 
     dicioFilmes[codigo_filme][campos_validos[campo]] = novo_valor
-    print(f'{campo} do filme atualizado com sucesso.')
+    print(f'\n{campo} do filme atualizado com sucesso.')
 
 def remover_filme(dicioFilmes, filmesExcluidos):
     if filmesExcluidos in dicioFilmes:
