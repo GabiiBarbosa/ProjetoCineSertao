@@ -1,8 +1,3 @@
-def validar_valor(texto):
-    campo = float(input(texto))
-    while campo < 0:
-        campo = float(input(texto))
-    return campo
 
 def validar_campo(texto):
     campo = input(texto)
@@ -28,7 +23,6 @@ def cadastrar_user(usuarios):
             print('Opção inválida. Por favor, insira 1 para Administrador ou 2 para Cliente.\n')
     usuarios[user] = [email, senha, perfil]
     print('\nCadastro realizado com sucesso!')
-
 
 def login_usuario(usuarios, user, email, senha):
     return user in usuarios and usuarios[user][0] == email and usuarios[user][1] == senha
