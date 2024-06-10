@@ -44,20 +44,22 @@ def comprar_ingresso(dicioFilmes, loginNome):
         print('Não há ingressos disponíveis para este filme.')
     return False
 
-def ver_ingressos_cliente(cliente):
+def ver_ingressos_cliente(cliente, dicioFilmes):
     if cliente in ingressosVendidosPorCliente:
         print(f'Ingressos comprados por {cliente}:')
         arquivo = open(f'{cliente}_ingressos.txt', 'w')
         for codigoFilme, qtde in ingressosVendidosPorCliente[cliente]:
-            filme = dicioFilmes[codigoFilme]
-            ingresso = (f'\nFilme: {filme[0]}, Quantidade: {qtde}, Total: R${filme[7] * qtde}')
+            nome_filme = dicioFilmes[codigoFilme][0]
+            preco_unitario = dicioFilmes[codigoFilme][7]
+            total = preco_unitario * qtde
+            ingresso = f'\nFilme: {nome_filme}, Quantidade: {qtde}, Total: R${total}'
             print(ingresso)
             arquivo.write(ingresso)
         arquivo.close()
     else:
         print('Nenhum ingresso comprado.')
 
-def alimentos():
+def alimentos(dicioFilmes, loginNome):
     if not comprar_ingresso(dicioFilmes, loginNome):
         return
     while True:
