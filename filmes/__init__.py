@@ -84,8 +84,8 @@ def atualizar_filme(dicioFilmes):
                 return
 
     if campo == 'sala':
-        novo_valor_int = int(novo_valor)
         for filme_cod in dicioFilmes:
+            novo_valor_int = int(novo_valor)
             if novo_valor_int == dicioFilmes[filme_cod][4] and filme_cod != codigo_filme:
                 print('\nA sala do filme já está em uso.')
                 return
