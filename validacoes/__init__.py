@@ -21,7 +21,8 @@ def cadastrar_user(usuarios):
         perfil = validar_campo('Digite [1] para cadastrar-se Administrador ou [2] para cadastrar-se Cliente: ')
         if perfil != '1' and perfil != '2':
             print('Opção inválida. Por favor, insira 1 para Administrador ou 2 para Cliente.\n')
-    usuarios[user] = [email, senha, perfil]
+    usuarios[user] =\
+        [email, senha, perfil]
     print('\nCadastro realizado com sucesso!')
 
 def login_usuario(usuarios, user, email, senha):
